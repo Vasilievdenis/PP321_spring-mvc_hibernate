@@ -40,6 +40,26 @@ public class Car {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        if (maxSpeed != car.maxSpeed) return false;
+        if (!model.equals(car.model)) return false;
+        return color.equals(car.color);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = model.hashCode();
+        result = 31 * result + color.hashCode();
+        result = 31 * result + maxSpeed;
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Car{" +
                 "model='" + model + '\'' +
