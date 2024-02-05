@@ -1,5 +1,6 @@
 package web.model;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +9,7 @@ public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
     @Column(name = "name")
     private String name;
     @Column (name = "lastname")
@@ -24,6 +25,16 @@ public class User {
 
     public User() {
 
+    }
+
+    public User(int id, String name, String lastname, int age, String email, String password, String roles) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
     }
 
     public int getId() {

@@ -10,12 +10,18 @@ import javax.persistence.TypedQuery;
 
 @Repository
 public class UserDaolmp implements UserDao {
-    @PersistenceContext
+
     private EntityManager entityManager;
+
+    @PersistenceContext
+    public void setEntityManager (EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
 
     @Override
     public TypedQuery<User> getUsers() {
-        return entityManager.createQuery("from User", User.class);
+        return (TypedQuery<User>) entityManager.createQuery("from User", User.class).getResultList();
     }
 
     @Override

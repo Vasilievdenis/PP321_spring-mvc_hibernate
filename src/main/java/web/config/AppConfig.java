@@ -18,18 +18,17 @@ import java.util.Properties;
 
 
 @Configuration
-@PropertySource("classpath:db.properties")
+@PropertySource("classpath:web/db.properties")
 @EnableTransactionManagement
 @ComponentScan(value = "web")
 public class AppConfig {
-    private Environment env;
 
+    private final Environment env;
+
+    @Autowired
     public AppConfig(Environment env) {
         this.env = env;
     }
-
-    @Autowired
-    private DataSource dataSource;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean getEntityManagerFactory() {
