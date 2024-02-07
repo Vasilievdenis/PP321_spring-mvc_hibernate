@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserDao;
 import web.model.User;
 
-import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Service
 @Transactional
@@ -22,13 +22,15 @@ public class UserServicelmp implements UserService {
 
     @Transactional(readOnly = true)
     @Override
-    public TypedQuery<User> getUsers() {
+    public List<User> getUsers() {
+
         return userDao.getUsers();
     }
 
     @Transactional(readOnly = true)
     @Override
     public User getUser(int id) {
+
         return userDao.getUser(id);
     }
 

@@ -5,7 +5,7 @@ import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import java.util.List;
 
 
 @Repository
@@ -20,8 +20,8 @@ public class UserDaolmp implements UserDao {
 
 
     @Override
-    public TypedQuery<User> getUsers() {
-        return (TypedQuery<User>) entityManager.createQuery("from User", User.class).getResultList();
+    public List<User> getUsers() {
+        return entityManager.createQuery("from User", User.class).getResultList();
     }
 
     @Override
